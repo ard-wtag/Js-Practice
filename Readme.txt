@@ -1,4 +1,4 @@
-Sure! Let's walk through the workflow of this shopping cart program from start to finish, explaining the lifecycle and the steps happening in between.
+Let's walk through the workflow of this shopping cart program from start to finish, explaining the lifecycle and the steps happening in between.
 
 ### 1. Initial Setup
 - **HTML Structure:** The HTML file sets up the structure of the page, including elements like the cart button, cart container, and dessert card container.
