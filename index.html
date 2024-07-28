@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show Image on Button Click</title>
+    <style>
+        #imageDiv {
+            display: none; /* Initially hide the div */
+        }
+    </style>
+</head>
+<body>
+    <form id="imageForm">
+        <label for="inputText">Enter a string:</label>
+        <input type="text" id="inputText" name="inputText">
+        <button type="button" onclick="showImage()">Show Image</button>
+    </form>
+
+    <div id="imageDiv">
+        <img id="image" src="https://via.placeholder.com/150" alt="Placeholder Image">
+    </div>
+
+   <!-- <script src="script.js"></script> -->
+
+    <script>
+        console.log(document.getElementById('inputText'));
+        function showImage() {
+            // Get the input value (if needed for any logic)
+
+            console.log("Inside the showImage function");
+            const inputValue = document.getElementById('inputText').value;
+            console.log("inputValue: ",inputValue);
+            
+            fetch(`https://pokeapi.co/api/v2/pokemon/${inputValue}`).then(response=>{
+                if(!response.ok){
+                        throw new error("Something went wrong");  
+                }
+                return response.json();
+            }).then(data=>{
+                    let img_url=data.sprites.front_shiny; 
+                    console.log(img_url)
+                    document.getElementById('image').src = img_url;
+                    document.getElementById('imageDiv').style.display = 'block';
+            }).catch(error=>{
+                console.log("Inside index html, error occured")
+                document.getElementById('imageDiv').style.display = 'none';
+            });
+            // Display the image div
+            
+        }
+    </script>
+</body>
+</html>
